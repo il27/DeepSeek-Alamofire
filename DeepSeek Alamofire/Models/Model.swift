@@ -7,35 +7,29 @@
 
 import Foundation
 
+// Структура для запроса к API — отправляет модель и сообщения
 struct ChatCompletionRequest: Encodable {
-    let model: String
-    let messages: [RequestMessage]
+    let model: String            // Название используемой AI-модели
+    let messages: [RequestMessage] // Список сообщений (например, то, что написал пользователь)
 }
 
+// Структура одного сообщения для запроса (например, от пользователя)
 struct RequestMessage: Encodable {
-    let role: String
-    let content: String
+    let role: String   // Роль (например, "user" или "assistant")
+    let content: String // Текст сообщения
 }
 
+// Структура для ответа от API — получаем массив вариантов ответа (choices)
 struct ChatCompletionResponse: Decodable {
-    let choices: [Choice]
+    let choices: [Choice] // Список вариантов ответа (choices)
     
+    // Один вариант ответа (choice)
     struct Choice: Decodable {
-        let message: ResponseMessage
+        let message: ResponseMessage // Сообщение с текстом ответа
         
+        // Структура сообщения внутри ответа
         struct ResponseMessage: Decodable {
-            let content: String
+            let content: String // Сам текст ответа (контент)
         }
     }
 }
-
-//{
-//  "model": "deepseek/deepseek-r1-0528:free",
-//  "messages": [
-//    {
-//      "role": "user",
-//      "content": "What is the meaning of life?"
-//    }
-//  ]
-//  
-//}
