@@ -39,5 +39,27 @@ class NetworkManager {
             }
         }
     }
+    
+    // Работа с получением Фото
+    func getRandomPhoto(completion: @escaping (String) -> Void) {
+        
+        let param: Parameters = [
+            "query":"car",
+            "client_id":"4PkMevkmKfWBB5nvFrZvVMlGU2B1-_Zel_tbcOPJ4vA"
+        ]
+        
+        AF.request("https://api.unsplash.com/photos/random", method: .get, parameters: param).response { result in
+            Task { @MainActor in
+                guard result.error == nil else { return }
+                guard let data = result.data else { return }
+                do {
+                    let result = try JSONDecoder().decode(RandomPhotoResponse.self, from: data)
+                    completion(result.urls.regular)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
 }
 

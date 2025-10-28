@@ -33,3 +33,13 @@ struct ChatCompletionResponse: Decodable {
         }
     }
 }
+
+// Работа с Фото
+struct RandomPhotoResponse: Decodable {
+    let urls: RandomPhotoURL
+}
+
+struct RandomPhotoURL: Decodable {
+    let full: String
+    let regular: String
+}
