@@ -53,5 +53,9 @@ fastlane/test_output
 *.log
 
 # Индивидуальные настройки окружения
+
+# Config files with API keys
+Config-Debug.xcconfig
+Config-Release.xcconfig
 .env
 *.env
