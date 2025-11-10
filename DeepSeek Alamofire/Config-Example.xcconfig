@@ -1,0 +1,12 @@
+//
+//  Config-Example.xcconfig
+//  DeepSeek Alamofire
+//
+//  Created by Ильяс on 05.11.2025.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+API_KEY = YOUR_API_KEY_HERE
+API_BASE_URL = https://api.example.com
