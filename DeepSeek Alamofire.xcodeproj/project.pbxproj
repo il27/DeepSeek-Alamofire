@@ -20,7 +20,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Config-Example.xcconfig",
-				"Config-Release.xcconfig",
 				Info.plist,
 			);
 			target = 2890C5322E7DBF9100EE3582 /* DeepSeek Alamofire */;
