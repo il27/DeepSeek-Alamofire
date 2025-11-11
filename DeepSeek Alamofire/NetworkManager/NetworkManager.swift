@@ -10,7 +10,7 @@ import Alamofire
 
 class NetworkManager {
     
-    private let apiKey = "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"
+    private let apiKey = ""
     private let deepSeekURL = "https://openrouter.ai/api/v1/chat/completions"
     
     func sendALRequest(message: String, completion: @escaping ([ChatCompletionResponse.Choice]) -> Void) {
@@ -45,10 +45,10 @@ class NetworkManager {
         
         let param: Parameters = [
             "query":"car",
-            "client_id":"4PkMevkmKfWBB5nvFrZvVMlGU2B1-_Zel_tbcOPJ4vA"
+//            "client_id": Config.apiKey
         ]
         
-        AF.request("https://api.unsplash.com/photos/random", method: .get, parameters: param).response { result in
+        AF.request(Config.apiBaseURL, method: .get, parameters: param).response { result in
             Task { @MainActor in
                 guard result.error == nil else { return }
                 guard let data = result.data else { return }
