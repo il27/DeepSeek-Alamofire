@@ -32,37 +32,26 @@ class ViewController: UIViewController {
         return $0
     }(UIButton())
     
-    lazy var imageView: UIImageView = {
-        $0.frame.origin = .zero
-        $0.frame.size = view.frame.size
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
-        return $0
-    }(UIImageView())
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(imageView)
         setupUI()
-        
-        // Делаем пробный запрос
-        networkManager.sendALRequest(message: "Привет") { choices in
-            for choice in choices {
-                print("Ответ AI: \(choice.message.content)")
-            }
-        }
-        
-        networkManager.getRandomPhoto { [weak self] in
-            guard let self = self else { return }
-            imageView.sd_setImage(with: URL(string: $0), placeholderImage: .actions)
-        }
+        setupNetworkPrompt()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         promptTextFilde.layer.cornerRadius = promptTextFilde.frame.height / 2
         promptButton.layer.cornerRadius = promptButton.frame.height / 2
+    }
+    
+    private func setupNetworkPrompt() {
+        // Делаем пробный запрос
+        networkManager.sendALRequest(message: "Привет") { choices in
+            for choice in choices {
+                print("Ответ AI: \(choice.message.content)")
+            }
+        }
     }
     
     func setupUI() {

@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = ViewController() // Контролер с которого начнем работу
+        self.window?.rootViewController = TabView() // Контролер с которого начнем работу
         self.window?.makeKeyAndVisible()
         
     }
